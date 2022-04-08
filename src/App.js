@@ -38,7 +38,7 @@ function handle()
  
 
   console.log(data);
-  axios.post("/",data).then((res)=>{
+  axios.post("https://smit-soni.herokuapp.com/",data).then((res)=>{
 if(res){
   alert(res.data);
 }
@@ -97,7 +97,7 @@ setresult((prev)=>[...prev,{id:ids,res:(e.dataTransfer.getData('item'))}]);
    { (rhs!="")?<div className='rhs'><span onClick={(e)=>{setrhs("")}} className="remove" data-value="0">x</span>{rhs}</div>:<></>}
   </div>
   <div>
-    <form enctype='multipart/form-data' onSubmit={handlesubmit} method='post' action="http://localhost:3001/"  >
+    <form  onSubmit={handlesubmit} method='post' action="https://smit-soni.herokuapp.com/"  >
   {/* {(result[1]) ? <input type="hidden" name="one" value={result[1].res}></input>:<></>}
   {(result[2]) ?   <input type="hidden" name="two" value={result[2].res}></input>:<></>}
   {(result[3]) ? <input type="hidden" name="three" value={result[3].res}></input>:<></>}
