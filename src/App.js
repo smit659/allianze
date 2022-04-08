@@ -38,7 +38,7 @@ function handle()
  
 
   console.log(data);
-  axios.post("http://localhost:3001/",data).then((res)=>{
+  axios.post("/",data).then((res)=>{
 if(res){
   alert(res.data);
 }
