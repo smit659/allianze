@@ -1,6 +1,7 @@
 
 
 import './App.css';
+
 import axios from "axios";
 import {useState} from 'react';
 function App() {
@@ -24,13 +25,33 @@ const close=(e,item,id)=>{
 }
 const handlesubmit=(e)=>{
 e.preventDefault();
-axios.post('/').then((res)=>{
+
+function handle()
+{
+  const data={
+    one:result[1].res,
+    two:result[2].res,
+    three:result[3].res,
+    four:answer_comparater,
+    five:rhs
+  }
+ 
+
+  console.log(data);
+  axios.post("http://localhost:3001/",data).then((res)=>{
 if(res){
-  alert('true');
+  alert(res.data);
 }
 }).catch((err)=>{
 
 });
+}
+
+
+
+
+
+handle();
 }
 const onDover=(e)=>{
 e.preventDefault();
@@ -76,12 +97,12 @@ setresult((prev)=>[...prev,{id:ids,res:(e.dataTransfer.getData('item'))}]);
    { (rhs!="")?<div className='rhs'><span onClick={(e)=>{setrhs("")}} className="remove" data-value="0">x</span>{rhs}</div>:<></>}
   </div>
   <div>
-    <form   method="post" action="https://smit-soni.herokuapp.com/">
-  {(result[1]) ? <input type="hidden" name="one" value={result[1].res}></input>:<></>}
+    <form enctype='multipart/form-data' onSubmit={handlesubmit} method='post' action="http://localhost:3001/"  >
+  {/* {(result[1]) ? <input type="hidden" name="one" value={result[1].res}></input>:<></>}
   {(result[2]) ?   <input type="hidden" name="two" value={result[2].res}></input>:<></>}
   {(result[3]) ? <input type="hidden" name="three" value={result[3].res}></input>:<></>}
   {(answer_comparater!="") ?  <input type="hidden" name="four" value={answer_comparater}></input>:<></>}
-  {(rhs!="") ?  <input type="hidden" name="five" value={rhs}></input>:<></>}
+  {(rhs!="") ?  <input type="hidden" name="five" value={rhs}></input>:<></>} */}
    <button className="evaluate-btn" type="submit" >Evaluate</button>
     </form>
   </div>
